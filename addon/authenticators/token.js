@@ -214,7 +214,7 @@ export default Base.extend({
       contentType: 'application/json',
       headers: this.headers,
       beforeSend: (xhr, settings) => {
-        xhr.setRequestHeader('Accept', settings.accepts.json);
+        xhr.setRequestHeader('Accept', this.useJsonApi?'application/vnd.api+json':settings.accepts.json);
 
         if (headers) {
           Object.keys(headers).forEach(key => {
