@@ -281,8 +281,7 @@ export default TokenAuthenticator.extend({
 
     if (this.useJsonApi)
     {
-      let jsonAPiData = data;
-      jsonAPiData = {
+      return  {
         data:
         {
           type: this.jsonApiTokenTypeName,
