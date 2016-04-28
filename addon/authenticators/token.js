@@ -170,10 +170,21 @@ export default Base.extend({
     @return {object} An object with properties for authentication.
   */
   getAuthenticateData(credentials) {
-    const authentication = {
+    var authentication = {
       [this.passwordField]: credentials.password,
       [this.identificationField]: credentials.identification
     };
+
+    if (this.useJsonApi)
+    {
+      authentication = {
+        data:
+        {
+          type: this.jsonApiTokenTypeName,
+          attributes: authentication
+        }
+      };
+    }
 
     return authentication;
   },
