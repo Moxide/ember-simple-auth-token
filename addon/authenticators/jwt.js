@@ -81,6 +81,8 @@ export default TokenAuthenticator.extend({
     this.tokenExpireName = Configuration.tokenExpireName;
     this.timeFactor = Configuration.timeFactor;
     this.headers = Configuration.headers;
+    this.useJsonApi = Configuration.useJsonApi;
+    this.jsonApiTokenTypeName = Configuration.jsonApiTokenTypeName;
   },
 
   /**
