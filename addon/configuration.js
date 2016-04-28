@@ -12,7 +12,9 @@ var defaults = {
   authorizationPrefix: 'Bearer ',
   authorizationHeaderName: 'Authorization',
   timeFactor: 1,
-  headers: {}
+  headers: {},
+  useJsonApi: false,
+  jsonApiTokenTypeName: 'obtain_json_web_tokens'
 };
 
 /**
@@ -155,6 +157,28 @@ export default {
     @default {}
   */
   headers: defaults.headers,
+
+  /**
+   The flag indicates that the need to use Json API for obtaining a token.
+
+   @property useJsonApi
+   @readonly
+   @static
+   @type Boolean
+   @default false
+   */
+  useJsonApi: defaults.useJsonApi,
+
+  /**
+   The token type name, which will be sent to the server using Json API.
+
+   @property jsonApiTokenTypeName
+   @readonly
+   @static
+   @type String
+   @default 'obtain_json_web_tokens'
+   */
+  jsonApiTokenTypeName: defaults.jsonApiTokenTypeName,
 
   /**
     @method load
