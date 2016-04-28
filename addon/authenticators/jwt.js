@@ -86,6 +86,19 @@ export default TokenAuthenticator.extend({
   },
 
   /**
+   Retreives token from server data
+
+   @method retreiveTokenFromData
+   @private
+   */
+  retreiveTokenFromData(data)
+  {
+    return this.useJsonApi?
+      data.get('data')[this.tokenPropertyName]:
+      data.get(this.tokenPropertyName);
+  },
+
+  /**
     Restores the session from a set of session properties.
 
     It will return a resolving promise if one of two conditions is met:
@@ -108,7 +121,7 @@ export default TokenAuthenticator.extend({
 
     return new Ember.RSVP.Promise((resolve, reject) => {
       const now = this.getCurrentTime();
-      const token = dataObject.get(this.tokenPropertyName);
+      const token = this.retreiveTokenFromData(dataObject);
       let expiresAt = this.resolveTime(dataObject.get(this.tokenExpireName));
 
       if (Ember.isEmpty(token)) {
@@ -351,14 +364,7 @@ export default TokenAuthenticator.extend({
     @private
    */
   handleAuthResponse(response) {
-    var token = {};
-
-    if (this.useJsonApi) {
-      token = Ember.get(response, 'data')[this.tokenPropertyName];
-    }
-    else {
-      token = Ember.get(response, this.tokenPropertyName);
-    }
+    const token = this.retreiveTokenFromData(Ember.get(response));
 
     if(Ember.isEmpty(token)) {
       throw new Error('Token is empty. Please check your backend response.');
