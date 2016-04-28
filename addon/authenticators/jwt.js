@@ -279,6 +279,18 @@ export default TokenAuthenticator.extend({
 
     lastObject[tokenPropertyName] = token;
 
+    if (this.useJsonApi)
+    {
+      let jsonAPiData = data;
+      jsonAPiData = {
+        data:
+        {
+          type: this.jsonApiTokenTypeName,
+          attributes: data
+        }
+      };
+    }
+
     return data;
   },
 
