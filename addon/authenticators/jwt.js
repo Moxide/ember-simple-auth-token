@@ -94,8 +94,8 @@ export default TokenAuthenticator.extend({
   retreiveTokenFromData(data)
   {
     return this.useJsonApi?
-      data.get('data')[this.tokenPropertyName]:
-      data.get(this.tokenPropertyName);
+      data['data'][this.tokenPropertyName]:
+      data[this.tokenPropertyName];
   },
 
   /**
