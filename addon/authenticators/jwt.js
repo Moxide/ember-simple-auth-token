@@ -364,7 +364,7 @@ export default TokenAuthenticator.extend({
     @private
    */
   handleAuthResponse(response) {
-    const token = this.retreiveTokenFromData(Ember.get(response));
+    const token = this.retreiveTokenFromData(response);
 
     if(Ember.isEmpty(token)) {
       throw new Error('Token is empty. Please check your backend response.');
