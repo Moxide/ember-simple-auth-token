@@ -89,16 +89,28 @@ export default Base.extend({
   useJsonApi: false,
 
   /**
-   The token type name, which will be sent to the server using Json API.
+   The token type name, which will be sent to the server using Json API on obtain action.
 
    This value can be configured via
-   [`SimpleAuth.Configuration.Token#jsonApiTokenTypeName`](#SimpleAuth-Configuration-Token-jsonApiTokenTypeName).
+   [`SimpleAuth.Configuration.Token#jsonApiObtainTokenName`](#SimpleAuth-Configuration-Token-jsonApiObtainTokenName).
 
-   @property jsonApiTokenTypeName
+   @property jsonApiObtainTokenName
    @type String
    @default 'obtain_json_web_tokens'
    */
-  jsonApiTokenTypeName: 'obtain_json_web_tokens',
+  jsonApiObtainTokenName: 'obtain_json_web_tokens',
+
+  /**
+   The token type name, which will be sent to the server using Json API on refresh action.
+
+   This value can be configured via
+   [`SimpleAuth.Configuration.Token#jsonApiRefreshTokenName`](#SimpleAuth-Configuration-Token-jsonApiRefreshTokenName).
+
+   @property jsonApiRefreshTokenName
+   @type String
+   @default 'refresh_json_web_tokens'
+   */
+  jsonApiRefreshTokenName: 'refresh_json_web_tokens',
 
   /**
     @method init
@@ -111,7 +123,8 @@ export default Base.extend({
     this.tokenPropertyName = Configuration.tokenPropertyName;
     this.headers = Configuration.headers;
     this.useJsonApi = Configuration.useJsonApi;
-    this.jsonApiTokenTypeName = Configuration.jsonApiTokenTypeName;
+    this.jsonApiObtainTokenName = Configuration.jsonApiObtainTokenName;
+    this.jsonApiRefreshTokenName = Configuration.jsonApiRefreshTokenName;
   },
 
   /**
@@ -170,20 +183,14 @@ export default Base.extend({
     @return {object} An object with properties for authentication.
   */
   getAuthenticateData(credentials) {
-    var authentication = {
+    const authentication = {
       [this.passwordField]: credentials.password,
       [this.identificationField]: credentials.identification
     };
 
     if (this.useJsonApi)
     {
-      authentication = {
-        data:
-        {
-          type: this.jsonApiTokenTypeName,
-          attributes: authentication
-        }
-      };
+      return this.makeJsonAPIRequest(authentication, this.jsonApiObtainTokenName);
     }
 
     return authentication;
@@ -234,5 +241,36 @@ export default Base.extend({
         }
       }
     });
+  },
+
+  /**
+   Retreives token from server data
+
+   @method retreiveTokenFromData
+   @private
+   */
+  retreiveTokenFromData(data)
+  {
+    return this.useJsonApi?
+      data['data'][this.tokenPropertyName]:
+      data[this.tokenPropertyName];
+  },
+
+  /**
+   Converts send request data to Json API format.
+
+   @method retreiveTokenFromData
+   @private
+   */
+  makeJsonAPIRequest(data, typeName)
+  {
+    return  {
+      data:
+      {
+        type: typeName,
+        attributes: data
+      }
+    };
   }
+
 });

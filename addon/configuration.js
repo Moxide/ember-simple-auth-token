@@ -14,7 +14,8 @@ var defaults = {
   timeFactor: 1,
   headers: {},
   useJsonApi: false,
-  jsonApiTokenTypeName: 'obtain_json_web_tokens'
+  jsonApiObtainTokenName: 'obtain_json_web_tokens',
+  jsonApiRefreshTokenName: 'refresh_json_web_tokens'
 };
 
 /**
@@ -172,13 +173,24 @@ export default {
   /**
    The token type name, which will be sent to the server using Json API.
 
-   @property jsonApiTokenTypeName
+   @property jsonApiObtainTokenName
    @readonly
    @static
    @type String
    @default 'obtain_json_web_tokens'
    */
-  jsonApiTokenTypeName: defaults.jsonApiTokenTypeName,
+  jsonApiObtainTokenName: defaults.jsonApiObtainTokenName,
+
+  /**
+   The token type name, which will be sent to the server using Json API.
+
+   @property jsonApiRefreshTokenName
+   @readonly
+   @static
+   @type String
+   @default 'refresh_json_web_tokens'
+   */
+  jsonApiRefreshTokenName: defaults.jsonApiRefreshTokenName,
 
   /**
     @method load

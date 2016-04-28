@@ -82,20 +82,8 @@ export default TokenAuthenticator.extend({
     this.timeFactor = Configuration.timeFactor;
     this.headers = Configuration.headers;
     this.useJsonApi = Configuration.useJsonApi;
-    this.jsonApiTokenTypeName = Configuration.jsonApiTokenTypeName;
-  },
-
-  /**
-   Retreives token from server data
-
-   @method retreiveTokenFromData
-   @private
-   */
-  retreiveTokenFromData(data)
-  {
-    return this.useJsonApi?
-      data['data'][this.tokenPropertyName]:
-      data[this.tokenPropertyName];
+    this.jsonApiObtainTokenName = Configuration.jsonApiObtainTokenName;
+    this.jsonApiRefreshTokenName = Configuration.jsonApiRefreshTokenName;
   },
 
   /**
@@ -281,13 +269,7 @@ export default TokenAuthenticator.extend({
 
     if (this.useJsonApi)
     {
-      return  {
-        data:
-        {
-          type: this.jsonApiTokenTypeName,
-          attributes: data
-        }
-      };
+      return this.makeJsonAPIRequest(data, this.jsonApiRefreshTokenName);
     }
 
     return data;
