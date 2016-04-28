@@ -77,6 +77,30 @@ export default Base.extend({
   headers: {},
 
   /**
+   The flag indicates that the need to use Json API for obtaining a token.
+
+   This value can be configured via
+   [`SimpleAuth.Configuration.Token#useJsonApi`](#SimpleAuth-Configuration-Token-useJsonApi).
+
+   @property useJsonApi
+   @type Boolean
+   @default false
+   */
+  useJsonApi: false,
+
+  /**
+   The token type name, which will be sent to the server using Json API.
+
+   This value can be configured via
+   [`SimpleAuth.Configuration.Token#jsonApiTokenTypeName`](#SimpleAuth-Configuration-Token-jsonApiTokenTypeName).
+
+   @property jsonApiTokenTypeName
+   @type String
+   @default 'obtain_json_web_tokens'
+   */
+  jsonApiTokenTypeName: 'obtain_json_web_tokens',
+
+  /**
     @method init
     @private
   */
@@ -86,6 +110,8 @@ export default Base.extend({
     this.passwordField = Configuration.passwordField;
     this.tokenPropertyName = Configuration.tokenPropertyName;
     this.headers = Configuration.headers;
+    this.useJsonApi = Configuration.useJsonApi;
+    this.jsonApiTokenTypeName = Configuration.jsonApiTokenTypeName;
   },
 
   /**
