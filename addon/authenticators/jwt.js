@@ -351,7 +351,14 @@ export default TokenAuthenticator.extend({
     @private
    */
   handleAuthResponse(response) {
-    const token = Ember.get(response, this.tokenPropertyName);
+    var token = {};
+
+    if (this.useJsonApi) {
+      token = Ember.get(response, 'data')[this.tokenPropertyName];
+    }
+    else {
+      token = Ember.get(response, this.tokenPropertyName);
+    }
 
     if(Ember.isEmpty(token)) {
       throw new Error('Token is empty. Please check your backend response.');
