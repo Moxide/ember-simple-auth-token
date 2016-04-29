@@ -105,7 +105,7 @@ export default Base.extend({
     @param {function} block
   */
   authorize(data = {}, block = () => {}) {
-    const token = this.retreiveTokenFromData(Ember.get(data));
+    const token = this.retreiveTokenFromData(data);
     const prefix = this.authorizationPrefix ? this.authorizationPrefix : '';
 
     if (this.get('session.isAuthenticated') && !Ember.isEmpty(token)) {
