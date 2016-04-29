@@ -54,12 +54,25 @@ export default Base.extend({
   authorizationHeaderName: 'Authorization',
 
   /**
+   The flag indicates that the need to use Json API for obtaining a token.
+
+   This value can be configured via
+   [`SimpleAuth.Configuration.Token#useJsonApi`](#SimpleAuth-Configuration-Token-useJsonApi).
+
+   @property useJsonApi
+   @type Boolean
+   @default false
+   */
+  useJsonApi: false,
+
+  /**
     @method init
     @private
   */
   init() {
     this.tokenPropertyName = Configuration.tokenPropertyName;
     this.authorizationHeaderName = Configuration.authorizationHeaderName;
+    this.useJsonApi = Configuration.useJsonApi;
 
     if (Configuration.authorizationPrefix || Configuration.authorizationPrefix === null) {
       this.authorizationPrefix = Configuration.authorizationPrefix;
