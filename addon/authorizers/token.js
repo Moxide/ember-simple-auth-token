@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import Base from 'ember-simple-auth/authorizers/base';
-import TokenAuthenticator from 'ember-simple-auth/authenticators/token';
 import Configuration from '../configuration';
 
 /**
@@ -68,6 +67,19 @@ export default Base.extend({
   },
 
   /**
+   Retreives token from server data
+
+   @method retreiveTokenFromData
+   @private
+   */
+  retreiveTokenFromData(data)
+  {
+    return this.useJsonApi?
+      data['data'][this.tokenPropertyName]:
+      data[this.tokenPropertyName];
+  },
+
+  /**
     Authorizes an XHR request by sending the `token`
     properties from the session in the `Authorization` header:
 
@@ -80,7 +92,7 @@ export default Base.extend({
     @param {function} block
   */
   authorize(data = {}, block = () => {}) {
-    const token = TokenAuthenticator.retreiveTokenFromData(Ember.get(data));
+    const token = this.retreiveTokenFromData(Ember.get(data));
     const prefix = this.authorizationPrefix ? this.authorizationPrefix : '';
 
     if (this.get('session.isAuthenticated') && !Ember.isEmpty(token)) {
