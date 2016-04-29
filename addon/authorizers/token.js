@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import Base from 'ember-simple-auth/authorizers/base';
+import TokenAuthenticator from 'ember-simple-auth/authenticators/token';
 import Configuration from '../configuration';
 
 /**
@@ -79,7 +80,7 @@ export default Base.extend({
     @param {function} block
   */
   authorize(data = {}, block = () => {}) {
-    const token = Ember.get(data, this.tokenPropertyName);
+    const token = TokenAuthenticator.retreiveTokenFromData(Ember.get(data));
     const prefix = this.authorizationPrefix ? this.authorizationPrefix : '';
 
     if (this.get('session.isAuthenticated') && !Ember.isEmpty(token)) {
