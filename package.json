@@ -1,30 +1,82 @@
 {
-  "name": "ember-simple-auth-token",
-  "version": "1.1.1",
-  "description": "An authenticator and authorizer for Ember Simple Auth that is compatible with token-based authentication like JWT in Ember CLI applications.",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
+  "_args": [
+    [
+      {
+        "raw": "github:moxide/ember-simple-auth-token",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "github:moxide/ember-simple-auth-token",
+        "spec": "github:moxide/ember-simple-auth-token",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:moxide/ember-simple-auth-token.git",
+          "sshUrl": "git+ssh://git@github.com/moxide/ember-simple-auth-token.git",
+          "httpsUrl": "git+https://github.com/moxide/ember-simple-auth-token.git",
+          "gitUrl": "git://github.com/moxide/ember-simple-auth-token.git",
+          "shortcut": "github:moxide/ember-simple-auth-token",
+          "directUrl": "https://raw.githubusercontent.com/moxide/ember-simple-auth-token/master/package.json"
+        }
+      },
+      "/home/fred/Documents/ember/med-agenda"
+    ]
+  ],
+  "_from": "moxide/ember-simple-auth-token",
+  "_id": "ember-simple-auth-token@1.1.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/ember-simple-auth-token",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "github:moxide/ember-simple-auth-token",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "github:moxide/ember-simple-auth-token",
+    "spec": "github:moxide/ember-simple-auth-token",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:moxide/ember-simple-auth-token.git",
+      "sshUrl": "git+ssh://git@github.com/moxide/ember-simple-auth-token.git",
+      "httpsUrl": "git+https://github.com/moxide/ember-simple-auth-token.git",
+      "gitUrl": "git://github.com/moxide/ember-simple-auth-token.git",
+      "shortcut": "github:moxide/ember-simple-auth-token",
+      "directUrl": "https://raw.githubusercontent.com/moxide/ember-simple-auth-token/master/package.json"
+    }
   },
-  "scripts": {
-    "build": "ember build",
-    "start": "ember server",
-    "test": "ember try:testall"
-  },
-  "repository": "https://github.com/jpadilla/ember-simple-auth-token",
-  "engines": {
-    "node": ">= 0.10.0"
-  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git://github.com/moxide/ember-simple-auth-token.git#811cdfda16131c88288b8c1a911be7fac244aca0",
+  "_shasum": "9bd05fb06384b40967136d0eb360c3b85af4e716",
+  "_shrinkwrap": null,
+  "_spec": "github:moxide/ember-simple-auth-token",
+  "_where": "/home/fred/Documents/ember/med-agenda",
   "author": {
     "name": "José Padilla",
     "email": "hello@jpadilla.com",
     "url": "http://jpadilla.com"
   },
+  "bugs": {
+    "url": "https://github.com/jpadilla/ember-simple-auth-token/issues"
+  },
   "contributors": [
-    "Giovanni Collazo <hello@gcollazo.com>",
-    "Emmanuel Luciano <emma.luciano11@gmail.com>"
+    {
+      "name": "Giovanni Collazo",
+      "email": "hello@gcollazo.com"
+    },
+    {
+      "name": "Emmanuel Luciano",
+      "email": "emma.luciano11@gmail.com"
+    }
   ],
-  "license": "MIT",
+  "dependencies": {
+    "ember-cli-babel": "^5.1.5"
+  },
+  "description": "An authenticator and authorizer for Ember Simple Auth that is compatible with token-based authentication like JWT in Ember CLI applications.",
   "devDependencies": {
     "body-parser": "^1.12.4",
     "broccoli-asset-rev": "^2.2.0",
@@ -55,6 +107,22 @@
     "jsonwebtoken": "^5.0.0",
     "morgan": "^1.5.2"
   },
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "ember-addon": {
+    "configPath": "tests/dummy/config",
+    "demoURL": "https://jpadilla.github.io/ember-simple-auth-token/",
+    "versionCompatibility": {
+      "ember": ">1.13.0 <=2.5.0"
+    }
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "gitHead": "811cdfda16131c88288b8c1a911be7fac244aca0",
+  "homepage": "https://github.com/jpadilla/ember-simple-auth-token#readme",
   "keywords": [
     "ember-addon",
     "token",
@@ -63,14 +131,19 @@
     "authentication",
     "authorization"
   ],
-  "dependencies": {
-    "ember-cli-babel": "^5.1.5"
+  "license": "MIT",
+  "name": "ember-simple-auth-token",
+  "optionalDependencies": {},
+  "readme": "# Ember Simple Auth Token\n\n[![build-status-image]][travis]\n[![ember-observer-score-image]][ember-observer]\n\nThis is an extension to the Ember Simple Auth library that provides a default token authenticator, an enhanced authenticator with automatic refresh capability, and an authorizer that are compatible with APIs with token-based authentication.\n\nIf you're thinking about using this addon in combination with JSON Web Tokens, you can find more about why they're so awesome in [this article][medium-jwt].\n\n**As your user's credentials as well as the token are exchanged between the\nEmber.js app and the server you have to make sure that this connection uses HTTPS!**\n\n## Live Demo\n\nView a live demo here: [https://jpadilla.github.io/ember-simple-auth-token/][demo]\n\n## Installation\n\nTo install Ember Simple Auth Token in an Ember.js application that uses [Ember CLI][ember-cli]:\n\nMake sure you have [ember-simple-auth][ember-simple-auth] installed:\n\n```\nember install ember-simple-auth\n```\n\nTo install simply run:\n\n```\nember install ember-simple-auth-token\n```\n\n## The Authenticators\n\nIn order to use the Token authenticator or the JWT authenticator, the application needs to have a login route:\n\n```js\n// app/router.js\nRouter.map(function() {\n  this.route('login');\n});\n```\n\nThis route displays the login form with fields for `identification`,\n`password`:\n\n```html\n{{! app/templates/login.hbs }}\n<form {{action 'authenticate' on='submit'}}>\n  <label for=\"identification\">Login</label>\n  {{input id='identification' placeholder='Enter Login' value=identification}}\n  <label for=\"password\">Password</label>\n  {{input id='password' placeholder='Enter Password' type='password' value=password}}\n  <button type=\"submit\">Login</button>\n</form>\n```\n\nTo handle the `authenticate` action that is triggered by submitting the form you can do the following in the respective controller:\n\nNote: This was previously handled using Simple Auth's now deprecated `LoginControllerMixin`.\n\n**Token Authenticator**\n\nDefault base implementation for token authentication.\n\n```js\n// app/controllers/login.js\nimport Ember from 'ember';\n\nexport default Ember.Controller.extend({\n  session: Ember.inject.service(),\n\n  actions: {\n    authenticate: function() {\n      var credentials = this.getProperties('identification', 'password'),\n        authenticator = 'authenticator:token';\n\n      this.get('session').authenticate(authenticator, credentials);\n    }\n  }\n});\n```\n\n**JWT Authenticator**\n\nExtends the Token Authenticator and adds automatic token refresh functionality.\n\n```js\n// app/controllers/login.js\nimport Ember from 'ember';\n\nexport default Ember.Controller.extend({\n  session: Ember.inject.service(),\n\n  actions: {\n    authenticate: function() {\n      var credentials = this.getProperties('identification', 'password'),\n        authenticator = 'authenticator:jwt';\n\n      this.get('session').authenticate(authenticator, credentials);\n    }\n  }\n});\n```\n\nPlease note, the JWT authenticator will decode a token and look for the\nexpiration time found by looking up the token[Config.tokenExpireName]. It then\ncalculates the difference between the current time and the token expire time —\nfrom which the *refreshLeeway* is subtracted — to determine when to make the\nnext automatic token refresh request.\n\nFor example, with the following configuration:\n\n```\n  ENV['ember-simple-auth'] = {\n    authorizer: 'authorizer:token'\n  };\n  ENV['ember-simple-auth-token'] = {\n    refreshAccessTokens: true,\n    timeFactor: 1,\n    refreshLeeway: 300 // Refresh the token 5 minutes (300s) before it expires.\n  };\n```\n\nYour decoded token might look like this:\n\n```\ntoken = {\n  'user': 'george',\n  'email': 'george@castanza.com'\n  'exp': '98343234' // <ISO-8601> UTC seconds from e.g. python backend.\n}\n```\n\n*In this case the token expire name is using the default `exp` as set by the\n`Config.tokenExpireName` property.*\n\nAn automatic token refresh request would be sent out at token[Config.tokenExpireName] - now(). A good practice with regards to token refreshing is to also set a \"leeway\", usually no more than a few minutes, to account for clock skew when decoding JSON Web Tokens in the server-side. Some libraries like [PyJWT][pyjwt] and [ruby-jwt][ruby-jwt] already support this.\n\n## The Authorizer\n\nThe authorizer authorizes requests by adding `token` property from the session in the `Authorization` header:\n\n```\nAuthorization: Bearer <token>\n```\n\nTo use the authorizer, configure it in the global environment object:\n\n```js\n// config/environment.js\nENV['ember-simple-auth'] = {\n  authorizer: 'authorizer:token'\n};\n```\n\n## Sending token on API requests\n\nIf you need your token to be present on every request to your API you will need to inject the `DataAdapterMixin` from `ember-simple-auth` on your application `adapter`.\n\nExample from the `ember-simple-auth` [documentation](http://ember-simple-auth.com/api/classes/DataAdapterMixin.html):\n```js\n// app/adapters/application.js\nimport DS from 'ember-data';\nimport DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';\n\nexport default DS.JSONAPIAdapter.extend(DataAdapterMixin, {\n  authorizer: 'authorizer:application'\n});\n```\n*DataAdapterMixin is supported for Ember 1.13 and above*\n\n## Available Customization Options\n\nFor the Token authenticator:\n\n```js\n// config/environment.js\nENV['ember-simple-auth-token'] = {\n  serverTokenEndpoint: '/api/token-auth/',\n  identificationField: 'username',\n  passwordField: 'password',\n  tokenPropertyName: 'token',\n  authorizationPrefix: 'Bearer ',\n  authorizationHeaderName: 'Authorization',\n  headers: {},\n};\n```\n\nFor the JWT authenticator (in addition to the Token authenticator fields):\n\n```\n  refreshAccessTokens: true,\n  serverTokenRefreshEndpoint: '/api/token-refresh/',\n  tokenExpireName: 'exp',\n  refreshLeeway: 0,\n  timeFactor: 1  // example - set to \"1000\" to convert incoming seconds to milliseconds.\n```\n\n[build-status-image]: https://travis-ci.org/jpadilla/ember-simple-auth-token.svg?branch=master\n[travis]: https://travis-ci.org/jpadilla/ember-simple-auth-token\n[ember-observer-score-image]: http://emberobserver.com/badges/ember-simple-auth-token.svg\n[ember-observer]: http://emberobserver.com/addons/ember-simple-auth-token\n\n[demo]: https://jpadilla.github.io/ember-simple-auth-token/\n[ember-cli]: http://ember-cli.com/\n[ember-simple-auth]: https://github.com/simplabs/ember-simple-auth\n[pyjwt]: https://github.com/jpadilla/pyjwt\n[ruby-jwt]: https://github.com/jwt/ruby-jwt\n[medium-jwt]: https://medium.com/@leo/why-json-web-tokens-are-truly-awesome-23fb80b7fc20\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpadilla/ember-simple-auth-token.git"
   },
-  "ember-addon": {
-    "configPath": "tests/dummy/config",
-    "demoURL": "https://jpadilla.github.io/ember-simple-auth-token/",
-    "versionCompatibility": {
-      "ember": ">1.13.0 <=2.5.0"
-    }
-  }
+  "scripts": {
+    "build": "ember build",
+    "start": "ember server",
+    "test": "ember try:testall"
+  },
+  "version": "1.1.1"
 }

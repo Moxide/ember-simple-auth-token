@@ -188,10 +188,10 @@ export default Base.extend({
       [this.identificationField]: credentials.identification
     };
 
-    if (this.useJsonApi)
+    /*if (this.useJsonApi)
     {
       return this.makeJsonAPIRequest(authentication, this.jsonApiObtainTokenName);
-    }
+    }*/
 
     return authentication;
   },
@@ -252,7 +252,7 @@ export default Base.extend({
   retreiveTokenFromData(data)
   {
     return this.useJsonApi?
-      data['data'][this.tokenPropertyName]:
+      data['data']['attributes'][this.tokenPropertyName]:
       data[this.tokenPropertyName];
   },
 

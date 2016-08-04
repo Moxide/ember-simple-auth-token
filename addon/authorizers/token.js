@@ -88,7 +88,7 @@ export default Base.extend({
   retreiveTokenFromData(data)
   {
     return this.useJsonApi?
-      data['data'][this.tokenPropertyName]:
+      data['data']['attributes'][this.tokenPropertyName]:
       data[this.tokenPropertyName];
   },
 
